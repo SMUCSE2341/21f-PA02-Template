@@ -41,6 +41,8 @@ jobs:
     - name: Copy output files to artifact directory
       working-directory: ${{runner.workspace}}/build
       run: |
+        ls
+        ls data/
         mkdir artifacts
         for f in $OUTPUT_FILES
         do
