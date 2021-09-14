@@ -34,11 +34,11 @@ jobs:
 
     - name: Execute Tests
       working-directory: ${{github.workspace}}/build
-      run:  ${{env.TEST_EXE}}
+      run:  ${{github.workspace}/${{env.TEST_EXE}}
 
     - name: Execute Project
       working-directory: ${{github.workspace}}/build
-      run: ${{env.TEST_EXE}} ${{env.INPUT_FILE}} ${{env.OUTPUT_FILE}}
+      run: ${{github.workspace}/${{env.TEST_EXE}} ${{env.INPUT_FILE}} ${{env.OUTPUT_FILE}}
 
     - name: Copy output files to artifact directory
       working-directory: ${{github.workspace}}/build
