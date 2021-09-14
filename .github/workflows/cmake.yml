@@ -9,7 +9,7 @@ env:
   BUILD_TYPE: Debug
   TEST_EXE: 21f_PA02
   INPUT_FILE: data/test_book.txt
-  OUTPUT_FILE: output.txt
+  OUTPUT_FILE: data/output.txt
 
 
 jobs:
@@ -49,14 +49,14 @@ jobs:
 #        echo "  Copying $f"
 #        cp $f artifacts/
 #        done
-    - run: ls
-    - run: ls ${{github.workspace}}/build
-    - run: mkdir -p ${{github.workspace}}/build/artifacts
-    - run: cp ${{github.workspace}}/build/${{env.OUTPUT_FILE}} ${{github.workspace}}/build/artifacts
+#    - run: ls
+#    - run: ls ${{github.workspace}}/build
+#    - run: mkdir -p ${{github.workspace}}/build/artifacts
+#    - run: cp ${{github.workspace}}/build/${{env.OUTPUT_FILE}} ${{github.workspace}}/build/artifacts
 
     - name: Upload output files to GitHub so they can be reviewed
       uses: actions/upload-artifact@v2
       with:
         name: project_output
-        path: ${{github.workspace}}/build/artifacts
+        path: ${{github.workspace}}/build/data
       
