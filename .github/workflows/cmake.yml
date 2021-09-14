@@ -33,16 +33,16 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
     - name: Execute Tests
-      run:  ${{github.workspace}}/build/${{env.TEST_EXE}}
+      working-directory: ${{github.workspace}}/build
+      run:  ${{env.TEST_EXE}}
 
     - name: Execute Project
-      run: ${{github.workspace}}/build/${{env.TEST_EXE}} ${{env.INPUT_FILE}} ${{env.OUTPUT_FILE}}
+      working-directory: ${{github.workspace}}/build
+      run: ${{env.TEST_EXE}} ${{env.INPUT_FILE}} ${{env.OUTPUT_FILE}}
 
     - name: Copy output files to artifact directory
       working-directory: ${{github.workspace}}/build
       run: |
-        ls
-        ls data/
         mkdir artifacts
         for f in $OUTPUT_FILES
         do
@@ -51,7 +51,7 @@ jobs:
         done
 
     - name: Upload output files to GitHub so they can be reviewed
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v2
       with:
         name: project_output
         path: ${{github.workspace}}/build/artifacts
