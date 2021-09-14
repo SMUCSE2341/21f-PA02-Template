@@ -33,11 +33,11 @@ jobs:
       run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
 
     - name: Execute Tests
-      working-directory: ${{github.workspace}}/build
+      #working-directory: ${{github.workspace}}/build
       run:  ${{github.workspace}}/${{env.TEST_EXE}}
 
     - name: Execute Project
-      working-directory: ${{github.workspace}}/build
+      #working-directory: ${{github.workspace}}/build
       run: ${{github.workspace}}/${{env.TEST_EXE}} ${{env.INPUT_FILE}} ${{env.OUTPUT_FILE}}
 
     - name: Copy output files to artifact directory
