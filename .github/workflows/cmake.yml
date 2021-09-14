@@ -39,7 +39,7 @@ jobs:
       run: ${{github.workspace}}/build/${{env.TEST_EXE}} ${{env.INPUT_FILE}} ${{env.OUTPUT_FILE}}
 
     - name: Copy output files to artifact directory
-      working-directory: ${{runner.workspace}}/build
+      working-directory: ${{github.workspace}}/build
       run: |
         ls
         ls data/
